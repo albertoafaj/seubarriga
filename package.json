@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "lint": "eslint src/** test/** --fix"
   },
   "author": "",
@@ -12,6 +12,7 @@
   "devDependencies": {
     "eslint": "^8.29.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.26.0"
+    "eslint-plugin-import": "^2.26.0",
+    "jest": "^23.6.0"
   }
 }
