@@ -5,6 +5,7 @@ exports.up = (knex) => knex.schema.createTable('users', (t) => {
   t.string('passwd').notNull();
 });
 
+// eslint-disable-next-line arrow-body-style
 exports.down = (knex) => {
-  knex.schema.dropTable('users');
+  return knex.schema.dropTable('users');
 };
