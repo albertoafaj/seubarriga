@@ -1,7 +1,18 @@
 const express = require('express');
+const WrongResourceError = require('../erros/WrongResourceError');
 
 module.exports = (app) => {
   const router = express.Router();
+
+  router.param('id', async (req, res, next) => {
+    try {
+      const account = await app.services.account.find({ id: req.params.id });
+      if (account.user_id !== req.user.id) throw new WrongResourceError();
+      else return next();
+    } catch (error) {
+      return next(error);
+    }
+  });
 
   router.post('/', async (req, res, next) => {
     try {

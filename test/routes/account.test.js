@@ -38,7 +38,13 @@ test('Should not insert a account without name', async () => {
   expect(result.body.error).toBe('Nome é um atributo obrigatório');
 });
 
-test.skip('Should not insert a account with duplicate name for the same user', () => {
+test('Should not insert a account with duplicate name for the same user', async () => {
+  await app.db('accounts').insert({ name: 'Acc Duplicada', user_id: user.id });
+  const result = await request(app).post(MAIN_ROUTE)
+    .set('authorization', `bearer ${user.token}`)
+    .send({ name: 'Acc Duplicada' });
+  expect(result.status).toBe(400);
+  expect(result.body.error).toBe('Já existe uma conta com esse nome!');
 });
 
 test.skip('Should list all accounts', async () => {
@@ -71,7 +77,12 @@ test('Should return a account by id', async () => {
   expect(account.body.user_id);
 });
 
-test.skip("Should not return another user's account", () => {
+test("Should not return another user's account", async () => {
+  const accounts = await app.db('accounts').insert({ name: 'Acc User #2', user_id: user2.id }, ['id']);
+  const account = await request(app).get(`${MAIN_ROUTE}/${accounts[0].id}`)
+    .set('authorization', `bearer ${user.token}`);
+  expect(account.status).toBe(403);
+  expect(account.body.error).toBe('Este recurso não pertence ao usuário');
 });
 
 test('Should update a account', async () => {
@@ -82,7 +93,13 @@ test('Should update a account', async () => {
   expect(account.body.name).toBe('Acc Update');
 });
 
-test.skip("Should not update another user's account", () => {
+test("Should not update another user's account", async () => {
+  const accounts = await app.db('accounts').insert({ name: 'Acc User #2', user_id: user2.id }, ['id']);
+  const account = await request(app).put(`${MAIN_ROUTE}/${accounts[0].id}`)
+    .send({ name: 'Acc Updated' })
+    .set('authorization', `bearer ${user.token}`);
+  expect(account.status).toBe(403);
+  expect(account.body.error).toBe('Este recurso não pertence ao usuário');
 });
 
 test('Should remove a account', async () => {
@@ -92,5 +109,10 @@ test('Should remove a account', async () => {
   expect(account.status).toBe(204);
 });
 
-test.skip("Should not remove another user's account", () => {
+test("Should not remove another user's account", async () => {
+  const accounts = await app.db('accounts').insert({ name: 'Acc User #2', user_id: user2.id }, ['id']);
+  const account = await request(app).delete(`${MAIN_ROUTE}/${accounts[0].id}`)
+    .set('authorization', `bearer ${user.token}`);
+  expect(account.status).toBe(403);
+  expect(account.body.error).toBe('Este recurso não pertence ao usuário');
 });
