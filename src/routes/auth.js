@@ -1,3 +1,4 @@
+const express = require('express');
 const jwt = require('jwt-simple');
 const bcrypt = require('bcrypt-nodejs');
 const ValidationError = require('../erros/ValidationError');
@@ -6,7 +7,8 @@ const secret = 'Segredo!';
 
 module.exports = (app) => {
   // eslint-disable-next-line consistent-return
-  const signin = async (req, res, next) => {
+  const router = express.Router();
+  router.post('/signin', async (req, res, next) => {
     try {
       const user = await app.services.user.findOne({ email: req.body.email });
       let payload;
@@ -25,6 +27,15 @@ module.exports = (app) => {
     } catch (error) {
       return next(error);
     }
-  };
-  return { signin };
+  });
+  router.post('/signup', async (req, res, next) => {
+    try {
+      const result = await app.services.user.save(req.body);
+      return res.status(201).json(result[0]);
+    } catch (error) {
+      return next(error);
+    }
+  });
+
+  return router;
 };

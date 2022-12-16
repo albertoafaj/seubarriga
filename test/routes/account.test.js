@@ -2,7 +2,7 @@ const jwt = require('jwt-simple');
 const request = require('supertest');
 const app = require('../../src/app');
 
-const MAIN_ROUTE = '/accounts';
+const MAIN_ROUTE = '/v1/accounts';
 let user;
 
 beforeAll(async () => {
@@ -18,7 +18,7 @@ beforeAll(async () => {
 test('Should insert a account with sucess', async () => {
   const result = await request(app).post(MAIN_ROUTE)
     .set('authorization', `bearer ${user.token}`)
-    .send({ name: 'Acc #1', user_id: user.id });
+    .send({ name: 'Acc #1' });
   expect(result.status).toBe(201);
   expect(result.body.name).toBe('Acc #1');
 });
@@ -26,7 +26,7 @@ test('Should insert a account with sucess', async () => {
 test('Should not insert a account without name', async () => {
   const result = await request(app).post(MAIN_ROUTE)
     .set('authorization', `bearer ${user.token}`)
-    .send({ user_id: user.id });
+    .send({});
   expect(result.status).toBe(400);
   expect(result.body.error).toBe('Nome é um atributo obrigatório');
 });

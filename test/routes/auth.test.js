@@ -36,6 +36,6 @@ test('should not login non-existent user', async () => {
 });
 
 test('should not access protected route without token', async () => {
-  const users = await request(app).get('/users');
+  const users = await request(app).get('/v1/users');
   expect(users.status).toBe(401);
 });
