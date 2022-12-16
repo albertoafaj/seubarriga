@@ -4,15 +4,22 @@ const app = require('../../src/app');
 
 const MAIN_ROUTE = '/v1/accounts';
 let user;
+let user2;
 
-beforeAll(async () => {
+beforeEach(async () => {
   const res = await app.services.user.save({
     name: 'User Account',
     email: `${Date.now()}@email.com`,
     passwd: '123456',
   });
+  const res2 = await app.services.user.save({
+    name: 'User Account 2',
+    email: `${Date.now()}@email.com`,
+    passwd: '123456',
+  });
   user = { ...res[0] };
   user.token = jwt.encode(user, 'Segredo!');
+  user2 = { ...res2[0] };
 });
 
 test('Should insert a account with sucess', async () => {
@@ -34,7 +41,7 @@ test('Should not insert a account without name', async () => {
 test.skip('Should not insert a account with duplicate name for the same user', () => {
 });
 
-test('sdhould list all accounts', async () => {
+test.skip('Should list all accounts', async () => {
   await app.db('accounts').insert({ name: 'Acc #1', user_id: user.id }, '*');
   const res = await request(app).get(MAIN_ROUTE)
     .set('authorization', `bearer ${user.token}`);
@@ -42,7 +49,17 @@ test('sdhould list all accounts', async () => {
   expect(res.body.length).toBeGreaterThan(0);
 });
 
-test.skip('Should to list only the accounts of the user', () => {
+test('Should to list only the accounts of the user', async () => {
+  await app.db('accounts').insert([
+    { name: 'Acc User #1', user_id: user.id },
+    { name: 'Acc User #2', user_id: user2.id },
+  ]);
+  const res = await request(app)
+    .get(MAIN_ROUTE)
+    .set('authorization', `bearer ${user.token}`);
+  expect(res.status).toBe(200);
+  expect(res.body.length).toBe(1);
+  expect(res.body[0].name).toBe('Acc User #1');
 });
 
 test('Should return a account by id', async () => {

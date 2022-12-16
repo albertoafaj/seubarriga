@@ -13,7 +13,7 @@ module.exports = (app) => {
   });
   router.get('/', async (req, res, next) => {
     try {
-      const result = await app.services.account.findAll();
+      const result = await app.services.account.findAll(req.user.id);
       return res.status(200).json(result);
     } catch (error) {
       return next(error);
