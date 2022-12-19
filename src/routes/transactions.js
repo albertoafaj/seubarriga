@@ -33,8 +33,6 @@ module.exports = (app) => {
   router.put('/:id', async (req, res, next) => {
     try {
       const result = await app.services.transaction.update({ id: req.params.id }, req.body);
-      console.log(res.json(result));
-
       return res.status(200).json(result);
     } catch (error) {
       return next(error);
