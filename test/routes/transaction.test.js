@@ -67,6 +67,49 @@ test('Outbound transactions must be negative', async () => {
   expect(result.body.ammount).toBe('-100.00');
 });
 
+test('Should not insert a transaction without description', async () => {
+  const result = await request(app).post(MAIN_ROUTE)
+    .set('authorization', `bearer ${user.token}`)
+    .send({ date: new Date(), ammount: 100, type: 'O', acc_id: accUser.id });
+  expect(result.status).toBe(400);
+  expect(result.body.error).toBe('Descrição é um atributo obrigatório');
+});
+test('Should not insert a transaction without ammount', async () => {
+  const result = await request(app).post(MAIN_ROUTE)
+    .set('authorization', `bearer ${user.token}`)
+    .send({ description: 'New T', date: new Date(), type: 'O', acc_id: accUser.id });
+  expect(result.status).toBe(400);
+  expect(result.body.error).toBe('Valor é um atributo obrigatório');
+});
+test('Should not insert a transaction without data', async () => {
+  const result = await request(app).post(MAIN_ROUTE)
+    .set('authorization', `bearer ${user.token}`)
+    .send({ description: 'New T', ammount: 100, type: 'O', acc_id: accUser.id });
+  expect(result.status).toBe(400);
+  expect(result.body.error).toBe('Data é um atributo obrigatório');
+});
+test('Should not insert a transaction without account', async () => {
+  const result = await request(app).post(MAIN_ROUTE)
+    .set('authorization', `bearer ${user.token}`)
+    .send({ description: 'New T', date: new Date(), ammount: 100, type: 'O' });
+  expect(result.status).toBe(400);
+  expect(result.body.error).toBe('Conta é um atributo obrigatório');
+});
+test('Should not insert a transaction without type', async () => {
+  const result = await request(app).post(MAIN_ROUTE)
+    .set('authorization', `bearer ${user.token}`)
+    .send({ description: 'New T', date: new Date(), ammount: 100, acc_id: accUser.id });
+  expect(result.status).toBe(400);
+  expect(result.body.error).toBe('Tipo é um atributo obrigatório');
+});
+test('Should not insert a transaction with invalid type', async () => {
+  const result = await request(app).post(MAIN_ROUTE)
+    .set('authorization', `bearer ${user.token}`)
+    .send({ description: 'New T', date: new Date(), ammount: 100, type: 'D', acc_id: accUser.id });
+  expect(result.status).toBe(400);
+  expect(result.body.error).toBe('Tipo invalido, valores válidos "I" Entradas / "O" Saídas');
+});
+
 test('Should return a transaction for id ', async () => {
   const id = await app.db('transactions').insert({ description: 'T ID', date: new Date(), ammount: 100, type: 'I', acc_id: accUser.id }, ['id']);
   const result = await request(app).get(`${MAIN_ROUTE}/${id[0].id}`)
