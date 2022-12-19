@@ -57,6 +57,14 @@ test('Should return a transaction for id ', async () => {
   expect(result.body.description).toBe('T ID');
 });
 
+test('Should not return a transaction from another user', async () => {
+  const id = await app.db('transactions').insert({ description: 'T ID', date: new Date(), ammount: 100, type: 'I', acc_id: accUser2.id }, ['id']);
+  const result = await request(app).get(`${MAIN_ROUTE}/${id[0].id}`)
+    .set('authorization', `bearer ${user.token}`);
+  expect(result.status).toBe(403);
+  expect(result.body.error).toBe('Este recurso não pertence ao usuário');
+});
+
 test('Should update a transaction', async () => {
   const transaction = await app.db('transactions').insert({ description: 'T Update', date: new Date(), ammount: 100, type: 'I', acc_id: accUser.id }, ['id']);
   const result = await request(app).put(`${MAIN_ROUTE}/${transaction[0].id}`)
@@ -65,4 +73,28 @@ test('Should update a transaction', async () => {
   expect(result.status).toBe(200);
   expect(result.body[0].id).toBe(transaction[0].id);
   expect(result.body[0].description).toBe('T Update #2');
+});
+
+test('Should not update a transaction from another user', async () => {
+  const transaction = await app.db('transactions').insert({ description: 'T Update', date: new Date(), ammount: 100, type: 'I', acc_id: accUser2.id }, ['id']);
+  const result = await request(app).put(`${MAIN_ROUTE}/${transaction[0].id}`)
+    .set('authorization', `bearer ${user.token}`)
+    .send({ description: 'T Update #2' });
+  expect(result.status).toBe(403);
+  expect(result.body.error).toBe('Este recurso não pertence ao usuário');
+});
+
+test('Should remove a transaction', async () => {
+  const transaction = await app.db('transactions').insert({ description: 'T Delete', date: new Date(), ammount: 100, type: 'I', acc_id: accUser.id }, ['id']);
+  const result = await request(app).delete(`${MAIN_ROUTE}/${transaction[0].id}`)
+    .set('authorization', `bearer ${user.token}`);
+  expect(result.status).toBe(204);
+});
+
+test('Should not remove a transaction from another user', async () => {
+  const transaction = await app.db('transactions').insert({ description: 'T Delete', date: new Date(), ammount: 100, type: 'I', acc_id: accUser2.id }, ['id']);
+  const result = await request(app).delete(`${MAIN_ROUTE}/${transaction[0].id}`)
+    .set('authorization', `bearer ${user.token}`);
+  expect(result.status).toBe(403);
+  expect(result.body.error).toBe('Este recurso não pertence ao usuário');
 });

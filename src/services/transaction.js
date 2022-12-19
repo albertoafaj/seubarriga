@@ -12,5 +12,8 @@ module.exports = (app) => {
   const update = (param, body) => app.db('transactions')
     .where(param)
     .update({ ...body }, '*');
-  return { find, save, findOne, update };
+  const remove = (id) => app.db('transactions')
+    .where(id)
+    .del();
+  return { find, save, findOne, update, remove };
 };
