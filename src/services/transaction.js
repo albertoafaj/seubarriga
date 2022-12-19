@@ -4,5 +4,13 @@ module.exports = (app) => {
     .where(filter)
     .andWhere('accounts.user_id', '=', userId)
     .select();
-  return { find };
+  const findOne = (filter) => app.db('transactions')
+    .where(filter)
+    .first();
+  const save = (obj) => app.db('transactions')
+    .insert(obj, '*');
+  const update = (param, body) => app.db('transactions')
+    .where(param)
+    .update({ ...body }, '*');
+  return { find, save, findOne, update };
 };

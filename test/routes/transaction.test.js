@@ -39,3 +39,30 @@ test('Should list just user transactions', async () => {
   expect(result.body).toHaveLength(1);
   expect(result.body[0].description).toBe('T1');
 });
+
+test('Should insert a success transaction', async () => {
+  const result = await request(app).post(MAIN_ROUTE)
+    .set('authorization', `bearer ${user.token}`)
+    .send({ description: 'New T', date: new Date(), ammount: 100, type: 'I', acc_id: accUser.id });
+  expect(result.status).toBe(201);
+  expect(result.body.acc_id).toBe(accUser.id);
+});
+
+test('Should return a transaction for id ', async () => {
+  const id = await app.db('transactions').insert({ description: 'T ID', date: new Date(), ammount: 100, type: 'I', acc_id: accUser.id }, ['id']);
+  const result = await request(app).get(`${MAIN_ROUTE}/${id[0].id}`)
+    .set('authorization', `bearer ${user.token}`);
+  expect(result.status).toBe(200);
+  expect(result.body.id).toBe(id[0].id);
+  expect(result.body.description).toBe('T ID');
+});
+
+test('Should update a transaction', async () => {
+  const transaction = await app.db('transactions').insert({ description: 'T Update', date: new Date(), ammount: 100, type: 'I', acc_id: accUser.id }, ['id']);
+  const result = await request(app).put(`${MAIN_ROUTE}/${transaction[0].id}`)
+    .set('authorization', `bearer ${user.token}`)
+    .send({ description: 'T Update #2' });
+  expect(result.status).toBe(200);
+  expect(result.body[0].id).toBe(transaction[0].id);
+  expect(result.body[0].description).toBe('T Update #2');
+});
