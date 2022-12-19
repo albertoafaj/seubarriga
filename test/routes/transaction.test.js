@@ -49,6 +49,28 @@ test('Should insert a success transaction', async () => {
   expect(result.body.ammount).toBe('100.00');
 });
 
+describe('When trying to enter a invalid transaction', () => {
+  let validTransaction;
+  beforeAll(() => {
+    validTransaction = { description: 'New T', date: new Date(), ammount: 100, type: 'I', acc_id: accUser.id };
+  });
+
+  const testTemplate = async (newData, errorMessage) => {
+    const result = await request(app).post(MAIN_ROUTE)
+      .set('authorization', `bearer ${user.token}`)
+      .send({ ...validTransaction, ...newData });
+    expect(result.status).toBe(400);
+    expect(result.body.error).toBe(errorMessage);
+  };
+
+  test('Should not insert without description', () => testTemplate({ description: null }, 'Descrição é um atributo obrigatório'));
+  test('Should not insert a transaction without ammount', () => testTemplate({ ammount: null }, 'Valor é um atributo obrigatório'));
+  test('Should not insert a transaction without data', () => testTemplate({ date: null }, 'Data é um atributo obrigatório'));
+  test('Should not insert a transaction without account', () => testTemplate({ acc_id: null }, 'Conta é um atributo obrigatório'));
+  test('Should not insert a transaction without type', () => testTemplate({ type: null }, 'Tipo é um atributo obrigatório'));
+  test('Should not insert a transaction with invalid type', () => testTemplate({ type: 'D' }, 'Tipo invalido, valores válidos "I" Entradas / "O" Saídas'));
+});
+
 test('Incoming transactions must be positive', async () => {
   const result = await request(app).post(MAIN_ROUTE)
     .set('authorization', `bearer ${user.token}`)
@@ -65,49 +87,6 @@ test('Outbound transactions must be negative', async () => {
   expect(result.status).toBe(201);
   expect(result.body.acc_id).toBe(accUser.id);
   expect(result.body.ammount).toBe('-100.00');
-});
-
-test('Should not insert a transaction without description', async () => {
-  const result = await request(app).post(MAIN_ROUTE)
-    .set('authorization', `bearer ${user.token}`)
-    .send({ date: new Date(), ammount: 100, type: 'O', acc_id: accUser.id });
-  expect(result.status).toBe(400);
-  expect(result.body.error).toBe('Descrição é um atributo obrigatório');
-});
-test('Should not insert a transaction without ammount', async () => {
-  const result = await request(app).post(MAIN_ROUTE)
-    .set('authorization', `bearer ${user.token}`)
-    .send({ description: 'New T', date: new Date(), type: 'O', acc_id: accUser.id });
-  expect(result.status).toBe(400);
-  expect(result.body.error).toBe('Valor é um atributo obrigatório');
-});
-test('Should not insert a transaction without data', async () => {
-  const result = await request(app).post(MAIN_ROUTE)
-    .set('authorization', `bearer ${user.token}`)
-    .send({ description: 'New T', ammount: 100, type: 'O', acc_id: accUser.id });
-  expect(result.status).toBe(400);
-  expect(result.body.error).toBe('Data é um atributo obrigatório');
-});
-test('Should not insert a transaction without account', async () => {
-  const result = await request(app).post(MAIN_ROUTE)
-    .set('authorization', `bearer ${user.token}`)
-    .send({ description: 'New T', date: new Date(), ammount: 100, type: 'O' });
-  expect(result.status).toBe(400);
-  expect(result.body.error).toBe('Conta é um atributo obrigatório');
-});
-test('Should not insert a transaction without type', async () => {
-  const result = await request(app).post(MAIN_ROUTE)
-    .set('authorization', `bearer ${user.token}`)
-    .send({ description: 'New T', date: new Date(), ammount: 100, acc_id: accUser.id });
-  expect(result.status).toBe(400);
-  expect(result.body.error).toBe('Tipo é um atributo obrigatório');
-});
-test('Should not insert a transaction with invalid type', async () => {
-  const result = await request(app).post(MAIN_ROUTE)
-    .set('authorization', `bearer ${user.token}`)
-    .send({ description: 'New T', date: new Date(), ammount: 100, type: 'D', acc_id: accUser.id });
-  expect(result.status).toBe(400);
-  expect(result.body.error).toBe('Tipo invalido, valores válidos "I" Entradas / "O" Saídas');
 });
 
 test('Should return a transaction for id ', async () => {
