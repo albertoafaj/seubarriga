@@ -7,8 +7,13 @@ module.exports = (app) => {
   const findOne = (filter) => app.db('transactions')
     .where(filter)
     .first();
-  const save = (obj) => app.db('transactions')
-    .insert(obj, '*');
+  const save = (obj) => {
+    const transaction = obj;
+    if ((transaction.type === 'I' && transaction.ammount < 0) || (transaction.type === 'O' && transaction.ammount > 0)) {
+      transaction.ammount *= -1;
+    }
+    return app.db('transactions').insert(transaction, '*');
+  };
   const update = (param, body) => app.db('transactions')
     .where(param)
     .update({ ...body }, '*');
