@@ -56,6 +56,8 @@ test.skip('Should list all accounts', async () => {
 });
 
 test('Should to list only the accounts of the user', async () => {
+  await app.db('transactions').del();
+  await app.db('accounts').del();
   await app.db('accounts').insert([
     { name: 'Acc User #1', user_id: user.id },
     { name: 'Acc User #2', user_id: user2.id },
