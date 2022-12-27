@@ -21,7 +21,7 @@ exports.seed = async (knex) => {
   await knex('transactions').insert([
     { description: 'transfer from AccOri #1', date: new Date(), ammount: 100, type: 'I', acc_id: 99997, transfer_id: 99996 },
     { description: 'transfer to AccDes #1', date: new Date(), ammount: -100, type: 'O', acc_id: 99996, transfer_id: 99996 },
-    { description: 'transfer from AccOri #2', date: new Date(), ammount: 200, type: 'I', acc_id: 99999, transfer_id: 99997 },
-    { description: 'transfer to AccDes #2', date: new Date(), ammount: -200, type: 'O', acc_id: 99998, transfer_id: 99997 },
+    { description: 'transfer from AccOri #1', date: new Date(), ammount: 100, type: 'I', acc_id: 99999, transfer_id: 99997 },
+    { description: 'transfer to AccDes #1', date: new Date(), ammount: -100, type: 'O', acc_id: 99998, transfer_id: 99997 },
   ]);
 };
