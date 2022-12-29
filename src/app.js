@@ -1,12 +1,11 @@
 const app = require('express')();
 const consign = require('consign');
-/* const { query } = require('express'); */
 const knex = require('knex');
 const knexfile = require('../knexfile');
 
-// TODO create dinamic keys;
+console.log(`Aplication connection in: ${process.env.NODE_ENV}`);
 
-app.db = knex(knexfile.test);
+app.db = knex(knexfile[process.env.NODE_ENV]);
 
 consign({ cwd: 'src', verbose: false })
   .include('./config/passport.js')

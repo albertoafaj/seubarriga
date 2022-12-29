@@ -21,7 +21,7 @@
     <div class='clearfix'>
     </div>
   </div>
-  <div class='status-line high'></div>
+  <div class='status-line low'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -67,17 +67,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-yes">15x</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -90,31 +90,31 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const ValidationError = require('../erros/ValidationError');
 &nbsp;
 module.exports = (app) =&gt; {
-  const find = (userId, filter = {}) =&gt; app.db('transactions')
+  const find = <span class="fstat-no" title="function not covered" >(u</span>serId, filter = <span class="branch-0 cbranch-no" title="branch not covered" >{})</span> =&gt; <span class="cstat-no" title="statement not covered" >app.db('transactions')</span>
     .join('accounts', 'accounts.id', 'acc_id')
     .where(filter)
     .andWhere('accounts.user_id', '=', userId)
     .select();
-  const findOne = (filter) =&gt; app.db('transactions')
+  const findOne = <span class="fstat-no" title="function not covered" >(f</span>ilter) =&gt; <span class="cstat-no" title="statement not covered" >app.db('transactions')</span>
     .where(filter)
     .first();
-  const save = (obj) =&gt; {
-    if (!obj.description) throw new ValidationError('Descrição é um atributo obrigatório');
-    if (!obj.ammount) throw new ValidationError('Valor é um atributo obrigatório');
-    if (!obj.date) throw new ValidationError('Data é um atributo obrigatório');
-    if (!obj.acc_id) throw new ValidationError('Conta é um atributo obrigatório');
-    if (!obj.type) throw new ValidationError('Tipo é um atributo obrigatório');
-    if (obj.type !== 'I' &amp;&amp; obj.type !== 'O') throw new ValidationError('Tipo invalido, valores válidos "I" Entradas / "O" Saídas');
-    const transaction = obj;
-    if ((transaction.type === 'I' &amp;&amp; transaction.ammount &lt; 0) || (transaction.type === 'O' &amp;&amp; transaction.ammount &gt; 0)) {
-      transaction.ammount *= -1;
+  const save = <span class="fstat-no" title="function not covered" >(o</span>bj) =&gt; {
+<span class="cstat-no" title="statement not covered" >    if (!obj.description) <span class="cstat-no" title="statement not covered" >throw new ValidationError('Descrição é um atributo obrigatório');</span></span>
+<span class="cstat-no" title="statement not covered" >    if (!obj.ammount) <span class="cstat-no" title="statement not covered" >throw new ValidationError('Valor é um atributo obrigatório');</span></span>
+<span class="cstat-no" title="statement not covered" >    if (!obj.date) <span class="cstat-no" title="statement not covered" >throw new ValidationError('Data é um atributo obrigatório');</span></span>
+<span class="cstat-no" title="statement not covered" >    if (!obj.acc_id) <span class="cstat-no" title="statement not covered" >throw new ValidationError('Conta é um atributo obrigatório');</span></span>
+<span class="cstat-no" title="statement not covered" >    if (!obj.type) <span class="cstat-no" title="statement not covered" >throw new ValidationError('Tipo é um atributo obrigatório');</span></span>
+<span class="cstat-no" title="statement not covered" >    if (obj.type !== 'I' &amp;&amp; obj.type !== 'O') <span class="cstat-no" title="statement not covered" >throw new ValidationError('Tipo invalido, valores válidos "I" Entradas / "O" Saídas');</span></span>
+    const transaction = <span class="cstat-no" title="statement not covered" >obj;</span>
+<span class="cstat-no" title="statement not covered" >    if ((transaction.type === 'I' &amp;&amp; transaction.ammount &lt; 0) || (transaction.type === 'O' &amp;&amp; transaction.ammount &gt; 0)) {</span>
+<span class="cstat-no" title="statement not covered" >      transaction.ammount *= -1;</span>
     }
-    return app.db('transactions').insert(transaction, '*');
+<span class="cstat-no" title="statement not covered" >    return app.db('transactions').insert(transaction, '*');</span>
   };
-  const update = (param, body) =&gt; app.db('transactions')
+  const update = <span class="fstat-no" title="function not covered" >(p</span>aram, body) =&gt; <span class="cstat-no" title="statement not covered" >app.db('transactions')</span>
     .where(param)
     .update({ ...body }, '*');
-  const remove = (id) =&gt; app.db('transactions')
+  const remove = <span class="fstat-no" title="function not covered" >(i</span>d) =&gt; <span class="cstat-no" title="statement not covered" >app.db('transactions')</span>
     .where(id)
     .del();
   return { find, save, findOne, update, remove };
@@ -125,7 +125,7 @@ module.exports = (app) =&gt; {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Dec 29 2022 08:34:41 GMT-0300 (Horário Padrão de Brasília)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Dec 29 2022 16:03:33 GMT-0300 (Horário Padrão de Brasília)
 </div>
 </div>
 <script src="..\..\..\prettify.js"></script>

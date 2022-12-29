@@ -21,7 +21,7 @@
     <div class='clearfix'>
     </div>
   </div>
-  <div class='status-line high'></div>
+  <div class='status-line low'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -80,7 +80,7 @@
 55</td><td class="line-coverage quiet"><span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">7x</span>
@@ -88,100 +88,100 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">17x</span>
-<span class="cline-any cline-yes">15x</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const ValidationError = require('../erros/ValidationError');
 &nbsp;
 module.exports = (app) =&gt; {
-  const findOne = (filter = <span class="branch-0 cbranch-no" title="branch not covered" >{})</span> =&gt; app.db('transfers')
+  const findOne = <span class="fstat-no" title="function not covered" >(f</span>ilter = <span class="branch-0 cbranch-no" title="branch not covered" >{})</span> =&gt; <span class="cstat-no" title="statement not covered" >app.db('transfers')</span>
     .where(filter)
     .first();
-  const find = (filter = <span class="branch-0 cbranch-no" title="branch not covered" >{})</span> =&gt; app.db('transfers')
+  const find = <span class="fstat-no" title="function not covered" >(f</span>ilter = <span class="branch-0 cbranch-no" title="branch not covered" >{})</span> =&gt; <span class="cstat-no" title="statement not covered" >app.db('transfers')</span>
     .where(filter)
     .select();
 &nbsp;
-  const validate = async (transfer) =&gt; {
-    if (!transfer.description) throw new ValidationError('Descrição é um atributo obrigatório');
-    if (!transfer.ammount) throw new ValidationError('Valor é um atributo obrigatório');
-    if (!transfer.date) throw new ValidationError('Data é um atributo obrigatório');
-    if (!transfer.acc_ori_id) throw new ValidationError('Conta de origem é um atributo obrigatório');
-    if (!transfer.acc_des_id) throw new ValidationError('Conta de destino é um atributo obrigatório');
-    if (transfer.acc_ori_id === transfer.acc_des_id) throw new ValidationError('Conta de origem e destino não podem ser iguais');
-    const userAccounts = await app.db('accounts').whereIn('id', [transfer.acc_des_id, transfer.acc_ori_id]);
-    userAccounts.forEach((acc) =&gt; {
-      if (acc.user_id !== transfer.user_id) throw new ValidationError(`A conta de numero #${acc.id} não pertence a este usuário`);
+  const validate = <span class="fstat-no" title="function not covered" >as</span>ync (transfer) =&gt; {
+<span class="cstat-no" title="statement not covered" >    if (!transfer.description) <span class="cstat-no" title="statement not covered" >throw new ValidationError('Descrição é um atributo obrigatório');</span></span>
+<span class="cstat-no" title="statement not covered" >    if (!transfer.ammount) <span class="cstat-no" title="statement not covered" >throw new ValidationError('Valor é um atributo obrigatório');</span></span>
+<span class="cstat-no" title="statement not covered" >    if (!transfer.date) <span class="cstat-no" title="statement not covered" >throw new ValidationError('Data é um atributo obrigatório');</span></span>
+<span class="cstat-no" title="statement not covered" >    if (!transfer.acc_ori_id) <span class="cstat-no" title="statement not covered" >throw new ValidationError('Conta de origem é um atributo obrigatório');</span></span>
+<span class="cstat-no" title="statement not covered" >    if (!transfer.acc_des_id) <span class="cstat-no" title="statement not covered" >throw new ValidationError('Conta de destino é um atributo obrigatório');</span></span>
+<span class="cstat-no" title="statement not covered" >    if (transfer.acc_ori_id === transfer.acc_des_id) <span class="cstat-no" title="statement not covered" >throw new ValidationError('Conta de origem e destino não podem ser iguais');</span></span>
+    const userAccounts = <span class="cstat-no" title="statement not covered" >await app.db('accounts').whereIn('id', [transfer.acc_des_id, transfer.acc_ori_id]);</span>
+<span class="cstat-no" title="statement not covered" >    userAccounts.forEach(<span class="fstat-no" title="function not covered" >(a</span>cc) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      if (acc.user_id !== transfer.user_id) <span class="cstat-no" title="statement not covered" >throw new ValidationError(`A conta de numero #${acc.id} não pertence a este usuário`);</span></span>
     });
   };
 &nbsp;
-  const save = async (transfer) =&gt; {
+  const save = <span class="fstat-no" title="function not covered" >as</span>ync (transfer) =&gt; {
     // await validate(transfer);
-    const result = await app.db('transfers').insert(transfer, '*');
+    const result = <span class="cstat-no" title="statement not covered" >await app.db('transfers').insert(transfer, '*');</span>
 &nbsp;
-    const transferId = await result[0].id;
-    const transactions = [
+    const transferId = <span class="cstat-no" title="statement not covered" >await result[0].id;</span>
+    const transactions = <span class="cstat-no" title="statement not covered" >[</span>
       { description: `transfer to acc #${result[0].acc_des_id}`, date: result[0].date, ammount: result[0].ammount * -1, type: 'O', acc_id: result[0].acc_des_id, transfer_id: transferId, status: true },
       { description: `transfer from acc #${result[0].acc_ori_id}`, date: result[0].date, ammount: result[0].ammount, type: 'I', acc_id: result[0].acc_ori_id, transfer_id: transferId, status: true },
     ];
-    await app.db('transactions').insert(transactions);
-    return result;
+<span class="cstat-no" title="statement not covered" >    await app.db('transactions').insert(transactions);</span>
+<span class="cstat-no" title="statement not covered" >    return result;</span>
   };
-  const update = async (id, transfer) =&gt; {
+  const update = <span class="fstat-no" title="function not covered" >as</span>ync (id, transfer) =&gt; {
     // await validate(transfer);
-    const result = await app.db('transfers')
+    const result = <span class="cstat-no" title="statement not covered" >await app.db('transfers')</span>
       .where({ id })
       .update(transfer, '*');
-    const transactions = [
+    const transactions = <span class="cstat-no" title="statement not covered" >[</span>
       { description: `transfer to acc #${result[0].acc_des_id}`, date: result[0].date, ammount: result[0].ammount * -1, type: 'O', acc_id: result[0].acc_des_id, transfer_id: id, status: true },
       { description: `transfer from acc #${result[0].acc_ori_id}`, date: result[0].date, ammount: result[0].ammount, type: 'I', acc_id: result[0].acc_ori_id, transfer_id: id, status: true },
     ];
-    await app.db('transactions').where({ transfer_id: id }).del();
-    await app.db('transactions').insert(transactions);
-    return result;
+<span class="cstat-no" title="statement not covered" >    await app.db('transactions').where({ transfer_id: id }).del();</span>
+<span class="cstat-no" title="statement not covered" >    await app.db('transactions').insert(transactions);</span>
+<span class="cstat-no" title="statement not covered" >    return result;</span>
   };
-  const remove = async (id) =&gt; {
-    await app.db('transactions').where({ transfer_id: id }).del();
-    return app.db('transfers').where({ id }).del();
+  const remove = <span class="fstat-no" title="function not covered" >as</span>ync (id) =&gt; {
+<span class="cstat-no" title="statement not covered" >    await app.db('transactions').where({ transfer_id: id }).del();</span>
+<span class="cstat-no" title="statement not covered" >    return app.db('transfers').where({ id }).del();</span>
   };
   return { find, findOne, save, update, validate, remove };
 };
@@ -191,7 +191,7 @@ module.exports = (app) =&gt; {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Dec 29 2022 08:34:41 GMT-0300 (Horário Padrão de Brasília)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Dec 29 2022 16:03:33 GMT-0300 (Horário Padrão de Brasília)
 </div>
 </div>
 <script src="..\..\..\prettify.js"></script>

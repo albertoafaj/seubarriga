@@ -21,7 +21,7 @@
     <div class='clearfix'>
     </div>
   </div>
-  <div class='status-line high'></div>
+  <div class='status-line low'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -59,28 +59,28 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">7x</span>
@@ -89,29 +89,29 @@
 /* eslint-disable arrow-body-style */
 &nbsp;
 module.exports = (app) =&gt; {
-  const findAll = (userId) =&gt; {
-    return app.db('accounts').where({ user_id: userId });
+  const findAll = <span class="fstat-no" title="function not covered" >(u</span>serId) =&gt; {
+<span class="cstat-no" title="statement not covered" >    return app.db('accounts').where({ user_id: userId });</span>
   };
 &nbsp;
-  const find = (filter = <span class="branch-0 cbranch-no" title="branch not covered" >{})</span> =&gt; {
-    return app.db('accounts').where(filter).first();
+  const find = <span class="fstat-no" title="function not covered" >(f</span>ilter = <span class="branch-0 cbranch-no" title="branch not covered" >{})</span> =&gt; {
+<span class="cstat-no" title="statement not covered" >    return app.db('accounts').where(filter).first();</span>
   };
 &nbsp;
-  const save = async (account) =&gt; {
-    if (!account.name) throw new ValidationError('Nome é um atributo obrigatório');
-    const accDb = await find({ name: account.name, user_id: account.user_id });
-    if (accDb) throw new ValidationError('Já existe uma conta com esse nome!');
-    return app.db('accounts').insert(account, '*');
+  const save = <span class="fstat-no" title="function not covered" >as</span>ync (account) =&gt; {
+<span class="cstat-no" title="statement not covered" >    if (!account.name) <span class="cstat-no" title="statement not covered" >throw new ValidationError('Nome é um atributo obrigatório');</span></span>
+    const accDb = <span class="cstat-no" title="statement not covered" >await find({ name: account.name, user_id: account.user_id });</span>
+<span class="cstat-no" title="statement not covered" >    if (accDb) <span class="cstat-no" title="statement not covered" >throw new ValidationError('Já existe uma conta com esse nome!');</span></span>
+<span class="cstat-no" title="statement not covered" >    return app.db('accounts').insert(account, '*');</span>
   };
 &nbsp;
-  const update = (id, account) =&gt; {
-    return app.db('accounts').where({ id }).update(account, '*');
+  const update = <span class="fstat-no" title="function not covered" >(i</span>d, account) =&gt; {
+<span class="cstat-no" title="statement not covered" >    return app.db('accounts').where({ id }).update(account, '*');</span>
   };
 &nbsp;
-  const remove = async (id) =&gt; {
-    const result = await app.services.transaction.findOne({ acc_id: id });
-    if (result) throw new ValidationError('Essa conta possui transações associadas');
-    return app.db('accounts').where({ id }).delete();
+  const remove = <span class="fstat-no" title="function not covered" >as</span>ync (id) =&gt; {
+    const result = <span class="cstat-no" title="statement not covered" >await app.services.transaction.findOne({ acc_id: id });</span>
+<span class="cstat-no" title="statement not covered" >    if (result) <span class="cstat-no" title="statement not covered" >throw new ValidationError('Essa conta possui transações associadas');</span></span>
+<span class="cstat-no" title="statement not covered" >    return app.db('accounts').where({ id }).delete();</span>
   };
 &nbsp;
   return { save, findAll, find, update, remove };
@@ -122,7 +122,7 @@ module.exports = (app) =&gt; {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Dec 29 2022 08:34:41 GMT-0300 (Horário Padrão de Brasília)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Dec 29 2022 16:03:33 GMT-0300 (Horário Padrão de Brasília)
 </div>
 </div>
 <script src="..\..\..\prettify.js"></script>

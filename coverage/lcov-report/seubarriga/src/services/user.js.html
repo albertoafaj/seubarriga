@@ -21,7 +21,7 @@
     <div class='clearfix'>
     </div>
   </div>
-  <div class='status-line high'></div>
+  <div class='status-line medium'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -58,27 +58,27 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">103x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">26x</span>
-<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">53x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">30x</span>
-<span class="cline-any cline-yes">30x</span>
-<span class="cline-any cline-yes">29x</span>
-<span class="cline-any cline-yes">28x</span>
-<span class="cline-any cline-yes">27x</span>
-<span class="cline-any cline-yes">27x</span>
-<span class="cline-any cline-yes">26x</span>
-<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">7x</span>
@@ -87,28 +87,28 @@
 const ValidationError = require('../erros/ValidationError');
 &nbsp;
 module.exports = (app) =&gt; {
-  function findAll() {
-    return app.db('users').select(['id', 'name', 'email']);
+  function <span class="fstat-no" title="function not covered" >findAll(</span>) {
+<span class="cstat-no" title="statement not covered" >    return app.db('users').select(['id', 'name', 'email']);</span>
   }
 &nbsp;
   function findOne(filter = <span class="branch-0 cbranch-no" title="branch not covered" >{})</span> {
     return app.db('users').where(filter).select().first();
   }
 &nbsp;
-  const getPasswdHash = (passwd) =&gt; {
-    const salt = bcrypt.genSaltSync(10);
-    return bcrypt.hashSync(passwd, salt);
+  const getPasswdHash = <span class="fstat-no" title="function not covered" >(p</span>asswd) =&gt; {
+    const salt = <span class="cstat-no" title="statement not covered" >bcrypt.genSaltSync(10);</span>
+<span class="cstat-no" title="statement not covered" >    return bcrypt.hashSync(passwd, salt);</span>
   };
 &nbsp;
   const save = async (user) =&gt; {
     const userData = user;
-    if (!userData.name) throw new ValidationError('Nome é um atributo obrigatório');
-    if (!userData.email) throw new ValidationError('Email é um atributo obrigatório');
-    if (!userData.passwd) throw new ValidationError('Senha é um atributo obrigatório');
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (!userData.name) <span class="cstat-no" title="statement not covered" >throw new ValidationError('Nome é um atributo obrigatório');</span>
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (!userData.email) <span class="cstat-no" title="statement not covered" >throw new ValidationError('Email é um atributo obrigatório');</span>
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (!userData.passwd) <span class="cstat-no" title="statement not covered" >throw new ValidationError('Senha é um atributo obrigatório');</span>
     const userDb = await findOne({ email: userData.email });
-    if (userDb) throw new ValidationError('Ja existe um usuário com esse email');
-    userData.passwd = getPasswdHash(userData.passwd);
-    return app.db('users').insert(userData, ['id', 'name', 'email']);
+<span class="cstat-no" title="statement not covered" >    if (userDb) <span class="cstat-no" title="statement not covered" >throw new ValidationError('Ja existe um usuário com esse email');</span></span>
+<span class="cstat-no" title="statement not covered" >    userData.passwd = getPasswdHash(userData.passwd);</span>
+<span class="cstat-no" title="statement not covered" >    return app.db('users').insert(userData, ['id', 'name', 'email']);</span>
   };
 &nbsp;
   return { findAll, save, findOne };
@@ -119,7 +119,7 @@ module.exports = (app) =&gt; {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Dec 29 2022 08:34:41 GMT-0300 (Horário Padrão de Brasília)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Dec 29 2022 16:03:33 GMT-0300 (Horário Padrão de Brasília)
 </div>
 </div>
 <script src="..\..\..\prettify.js"></script>
