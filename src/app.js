@@ -1,7 +1,7 @@
 const app = require('express')();
 const consign = require('consign');
 const knex = require('knex');
-const knexfile = require('../knexfile');
+const knexfile = require('../knexenvs');
 
 console.log(`Aplication connection in: ${process.env.NODE_ENV}`);
 
