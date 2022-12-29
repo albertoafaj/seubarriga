@@ -31,9 +31,9 @@ module.exports = (app) => {
   });
   router.post('/', validate, async (req, res, next) => {
     try {
-      // const transfer = { ...req.body, user_id: req.user.id };
+      const transfer = { ...req.body, user_id: req.user.id };
       // if (req.body.user_id !== transfer.user_id) throw new WrongResourceError();
-      const r = await app.services.transfer.save(req.body);
+      const r = await app.services.transfer.save(transfer);
       return res.status(201).json(r);
     } catch (error) {
       return next(error);

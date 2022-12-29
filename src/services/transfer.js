@@ -27,8 +27,8 @@ module.exports = (app) => {
 
     const transferId = await result[0].id;
     const transactions = [
-      { description: `transfer to acc #${result[0].acc_des_id}`, date: result[0].date, ammount: result[0].ammount * -1, type: 'O', acc_id: result[0].acc_des_id, transfer_id: transferId },
-      { description: `transfer from acc #${result[0].acc_ori_id}`, date: result[0].date, ammount: result[0].ammount, type: 'I', acc_id: result[0].acc_ori_id, transfer_id: transferId },
+      { description: `transfer to acc #${result[0].acc_des_id}`, date: result[0].date, ammount: result[0].ammount * -1, type: 'O', acc_id: result[0].acc_des_id, transfer_id: transferId, status: true },
+      { description: `transfer from acc #${result[0].acc_ori_id}`, date: result[0].date, ammount: result[0].ammount, type: 'I', acc_id: result[0].acc_ori_id, transfer_id: transferId, status: true },
     ];
     await app.db('transactions').insert(transactions);
     return result;
@@ -39,8 +39,8 @@ module.exports = (app) => {
       .where({ id })
       .update(transfer, '*');
     const transactions = [
-      { description: `transfer to acc #${result[0].acc_des_id}`, date: result[0].date, ammount: result[0].ammount * -1, type: 'O', acc_id: result[0].acc_des_id, transfer_id: id },
-      { description: `transfer from acc #${result[0].acc_ori_id}`, date: result[0].date, ammount: result[0].ammount, type: 'I', acc_id: result[0].acc_ori_id, transfer_id: id },
+      { description: `transfer to acc #${result[0].acc_des_id}`, date: result[0].date, ammount: result[0].ammount * -1, type: 'O', acc_id: result[0].acc_des_id, transfer_id: id, status: true },
+      { description: `transfer from acc #${result[0].acc_ori_id}`, date: result[0].date, ammount: result[0].ammount, type: 'I', acc_id: result[0].acc_ori_id, transfer_id: id, status: true },
     ];
     await app.db('transactions').where({ transfer_id: id }).del();
     await app.db('transactions').insert(transactions);

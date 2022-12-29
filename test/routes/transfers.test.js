@@ -48,6 +48,10 @@ describe('When saving a valid transfer', () => {
     expect(income.type).toBe('I');
   });
   test('Both must reference the transfer that originated them.', async () => {
+    expect(income.status).toBe(true);
+    expect(outcome.status).toBe(true);
+  });
+  test('Both must be with status true', async () => {
     expect(income.transfer_id).toBe(transferId);
     expect(outcome.transfer_id).toBe(transferId);
   });
