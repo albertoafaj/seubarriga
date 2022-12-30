@@ -1,0 +1,8 @@
+{
+ "id": "6f409072-3f22-4795-85ea-5f43eabf74db",
+ "name": "error",
+ "message": "insert into \"accounts\" (\"att_errado\", \"name\", \"user_id\") values ($1, $2, $3) returning * - column \"att_errado\" of relation \"accounts\" does not exist",
+ "stack": "error: column \"att_errado\" of relation \"accounts\" does not exist\n    at Parser.parseErrorMessage (D:\\Projects\\Pratical-studies\\seubarriga\\node_modules\\pg-protocol\\dist\\parser.js:287:98)\n    at Parser.handlePacket (D:\\Projects\\Pratical-studies\\seubarriga\\node_modules\\pg-protocol\\dist\\parser.js:126:29)\n    at Parser.parse (D:\\Projects\\Pratical-studies\\seubarriga\\node_modules\\pg-protocol\\dist\\parser.js:39:38)\n    at Socket.<anonymous> (D:\\Projects\\Pratical-studies\\seubarriga\\node_modules\\pg-protocol\\dist\\index.js:11:42)\n    at Socket.emit (node:events:527:28)\n    at addChunk (node:internal/streams/readable:315:12)\n    at readableAddChunk (node:internal/streams/readable:289:9)\n    at Socket.Readable.push (node:internal/streams/readable:228:10)\n    at TCP.onStreamRead (node:internal/stream_base_commons:190:23)",
+ "level": "error",
+ "timestamp": "2022-12-30T12:57:50.778Z"
+}
