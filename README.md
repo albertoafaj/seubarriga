@@ -56,7 +56,7 @@ $ npm start
 $ npm run test
 ```
 
-#### Utilizando a API (Alguns exmplos de como testar as fguncionalidades de 1 a 3)
+#### Utilizando a API (Alguns exemplos de uso)
 
 1) Cadastro do usuário
    Rota: http://localhost:3001/auth/signup
