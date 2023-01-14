@@ -31,7 +31,7 @@ https://www.postgresql.org/download/
 
 https://www.pgadmin.org/download/
 
-#### Casdatrar Bancos de dados no Postgres
+#### Casdastrar Bancos de dados no Postgres
 
 * seubarriga 
 * barriga
