@@ -1,8 +1,42 @@
+
+}
 {
- "id": "6f409072-3f22-4795-85ea-5f43eabf74db",
+ "id": "f0bb5f2b-5efd-420a-9af3-b5124bdd78ef",
  "name": "error",
- "message": "insert into \"accounts\" (\"att_errado\", \"name\", \"user_id\") values ($1, $2, $3) returning * - column \"att_errado\" of relation \"accounts\" does not exist",
- "stack": "error: column \"att_errado\" of relation \"accounts\" does not exist\n    at Parser.parseErrorMessage (D:\\Projects\\Pratical-studies\\seubarriga\\node_modules\\pg-protocol\\dist\\parser.js:287:98)\n    at Parser.handlePacket (D:\\Projects\\Pratical-studies\\seubarriga\\node_modules\\pg-protocol\\dist\\parser.js:126:29)\n    at Parser.parse (D:\\Projects\\Pratical-studies\\seubarriga\\node_modules\\pg-protocol\\dist\\parser.js:39:38)\n    at Socket.<anonymous> (D:\\Projects\\Pratical-studies\\seubarriga\\node_modules\\pg-protocol\\dist\\index.js:11:42)\n    at Socket.emit (node:events:527:28)\n    at addChunk (node:internal/streams/readable:315:12)\n    at readableAddChunk (node:internal/streams/readable:289:9)\n    at Socket.Readable.push (node:internal/streams/readable:228:10)\n    at TCP.onStreamRead (node:internal/stream_base_commons:190:23)",
+ "message": "password authentication failed for user \"postgres\"",
+ "stack": "error: password authentication failed for user \"postgres\"\n    at Parser.parseErrorMessage (D:\\Projects\\Pratical-studies\\seubarriga\\node_modules\\pg-protocol\\dist\\parser.js:287:98)\n    at Parser.handlePacket (D:\\Projects\\Pratical-studies\\seubarriga\\node_modules\\pg-protocol\\dist\\parser.js:126:29)\n    at Parser.parse (D:\\Projects\\Pratical-studies\\seubarriga\\node_modules\\pg-protocol\\dist\\parser.js:39:38)\n    at Socket.<anonymous> (D:\\Projects\\Pratical-studies\\seubarriga\\node_modules\\pg-protocol\\dist\\index.js:11:42)\n    at Socket.emit (node:events:527:28)\n    at addChunk (node:internal/streams/readable:315:12)\n    at readableAddChunk (node:internal/streams/readable:289:9)\n    at Socket.Readable.push (node:internal/streams/readable:228:10)\n    at TCP.onStreamRead (node:internal/stream_base_commons:190:23)",
  "level": "error",
- "timestamp": "2022-12-30T12:57:50.778Z"
+ "timestamp": "2023-01-14T16:15:03.642Z"
+}
+{
+ "id": "01cd70f7-80e0-4aab-a170-fe218fc06b2d",
+ "name": "error",
+ "message": "password authentication failed for user \"postgres\"",
+ "stack": "error: password authentication failed for user \"postgres\"\n    at Parser.parseErrorMessage (D:\\Projects\\Pratical-studies\\seubarriga\\node_modules\\pg-protocol\\dist\\parser.js:287:98)\n    at Parser.handlePacket (D:\\Projects\\Pratical-studies\\seubarriga\\node_modules\\pg-protocol\\dist\\parser.js:126:29)\n    at Parser.parse (D:\\Projects\\Pratical-studies\\seubarriga\\node_modules\\pg-protocol\\dist\\parser.js:39:38)\n    at Socket.<anonymous> (D:\\Projects\\Pratical-studies\\seubarriga\\node_modules\\pg-protocol\\dist\\index.js:11:42)\n    at Socket.emit (node:events:527:28)\n    at addChunk (node:internal/streams/readable:315:12)\n    at readableAddChunk (node:internal/streams/readable:289:9)\n    at Socket.Readable.push (node:internal/streams/readable:228:10)\n    at TCP.onStreamRead (node:internal/stream_base_commons:190:23)",
+ "level": "error",
+ "timestamp": "2023-01-14T16:18:42.512Z"
+}
+{
+ "id": "cbc63216-abd1-4bd1-9bce-b9d81c190e15",
+ "name": "error",
+ "message": "password authentication failed for user \"postgres\"",
+ "stack": "error: password authentication failed for user \"postgres\"\n    at Parser.parseErrorMessage (D:\\Projects\\Pratical-studies\\seubarriga\\node_modules\\pg-protocol\\dist\\parser.js:287:98)\n    at Parser.handlePacket (D:\\Projects\\Pratical-studies\\seubarriga\\node_modules\\pg-protocol\\dist\\parser.js:126:29)\n    at Parser.parse (D:\\Projects\\Pratical-studies\\seubarriga\\node_modules\\pg-protocol\\dist\\parser.js:39:38)\n    at Socket.<anonymous> (D:\\Projects\\Pratical-studies\\seubarriga\\node_modules\\pg-protocol\\dist\\index.js:11:42)\n    at Socket.emit (node:events:527:28)\n    at addChunk (node:internal/streams/readable:315:12)\n    at readableAddChunk (node:internal/streams/readable:289:9)\n    at Socket.Readable.push (node:internal/streams/readable:228:10)\n    at TCP.onStreamRead (node:internal/stream_base_commons:190:23)",
+ "level": "error",
+ "timestamp": "2023-01-14T16:21:15.356Z"
+}
+{
+ "id": "00d024d6-3c1e-4d45-88a5-1281edeece04",
+ "name": "error",
+ "message": "password authentication failed for user \"postgres\"",
+ "stack": "error: password authentication failed for user \"postgres\"\n    at Parser.parseErrorMessage (D:\\Projects\\Pratical-studies\\seubarriga\\node_modules\\pg-protocol\\dist\\parser.js:287:98)\n    at Parser.handlePacket (D:\\Projects\\Pratical-studies\\seubarriga\\node_modules\\pg-protocol\\dist\\parser.js:126:29)\n    at Parser.parse (D:\\Projects\\Pratical-studies\\seubarriga\\node_modules\\pg-protocol\\dist\\parser.js:39:38)\n    at Socket.<anonymous> (D:\\Projects\\Pratical-studies\\seubarriga\\node_modules\\pg-protocol\\dist\\index.js:11:42)\n    at Socket.emit (node:events:527:28)\n    at addChunk (node:internal/streams/readable:315:12)\n    at readableAddChunk (node:internal/streams/readable:289:9)\n    at Socket.Readable.push (node:internal/streams/readable:228:10)\n    at TCP.onStreamRead (node:internal/stream_base_commons:190:23)",
+ "level": "error",
+ "timestamp": "2023-01-14T16:23:59.530Z"
+}
+{
+ "id": "f5311385-0847-4709-8b4f-958c541204a3",
+ "name": "error",
+ "message": "password authentication failed for user \"postgres\"",
+ "stack": "error: password authentication failed for user \"postgres\"\n    at Parser.parseErrorMessage (D:\\Projects\\Pratical-studies\\seubarriga\\node_modules\\pg-protocol\\dist\\parser.js:287:98)\n    at Parser.handlePacket (D:\\Projects\\Pratical-studies\\seubarriga\\node_modules\\pg-protocol\\dist\\parser.js:126:29)\n    at Parser.parse (D:\\Projects\\Pratical-studies\\seubarriga\\node_modules\\pg-protocol\\dist\\parser.js:39:38)\n    at Socket.<anonymous> (D:\\Projects\\Pratical-studies\\seubarriga\\node_modules\\pg-protocol\\dist\\index.js:11:42)\n    at Socket.emit (node:events:527:28)\n    at addChunk (node:internal/streams/readable:315:12)\n    at readableAddChunk (node:internal/streams/readable:289:9)\n    at Socket.Readable.push (node:internal/streams/readable:228:10)\n    at TCP.onStreamRead (node:internal/stream_base_commons:190:23)",
+ "level": "error",
+ "timestamp": "2023-01-14T16:28:27.271Z"
 }
